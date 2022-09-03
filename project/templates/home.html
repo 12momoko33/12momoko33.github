@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    ホーム
+{% endblock %}
+
+{% block main %}
+    <b><span id="now" style="color: #F56D91"></span></b>
+    <br>
+    <script>
+        var now = new Date();
+        var Year = now.getFullYear();
+        var Month = now.getMonth()+1;
+        var Date = now.getDate();
+        document.getElementById('now').textContent = Year + "-" + Month + "-" + Date
+    </script>
+    <table>
+        <thead>
+            <tr style="text-align:center">
+                <th>タイトル</style></th>
+                <th>期限</th>
+                <th>残日数</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%- set ns = namespace(i=0) -%}
+            {% for row in result %}
+            {% if diff[ns.i] < 0 %}
+            <tr  style="background-color:#ffbcbc">
+            {% else %}
+            <tr style="background-color:#ffffff">
+            {% endif %}
+                <td style="text-align:left"> {{ row["todo"] }} </td>
+                <td style="text-align:right"> {{ row["will"] }} </td>
+                <td style="text-align:right">{{ diff[ns.i] }}日</td>
+            </tr>
+            {%- set ns.i = ns.i + 1 -%}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

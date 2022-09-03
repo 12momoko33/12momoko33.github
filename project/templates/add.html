@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    追加
+{% endblock %}
+
+{% block main %}
+    <form action="/add" method="post">
+        <div class="mb-3">
+            タイトル<br>
+            <input autocomplete="off" autofocus id="todo" name="todo" type="text">
+        </div>
+        <div class="mb-3">
+            間隔</br>
+            <input autocomplete="off" id="interval" name="interval" placeholder="0" type="number" style="width:50px;">
+            <select name="unit" id="unit">
+                    <option value="month">ヶ月</option>
+                    <option value="week">週</option>
+                    <option value="day">日</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            最後に行った日<br>
+            <input autocomplete="off" id="did" name="did" type="date"></p>
+        </div>
+        <button class="btn" type="submit">追加</button>
+    </form>
+
+{% endblock %}

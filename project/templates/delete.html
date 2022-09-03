@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    削除
+{% endblock %}
+
+{% block main %}
+<form action="/delete" method="post">
+    <div class="mb-3">
+        <select name="todo" id="todo">
+            {% for todo in todos %}
+                <option value="{{ todo['todo'] }}">{{ todo['todo'] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn" type="submit">削除</button>
+</form>
+{% endblock %}

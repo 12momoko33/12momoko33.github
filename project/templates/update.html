@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    更新
+{% endblock %}
+
+{% block main %}
+<form action="/update" method="post">
+    <div class="mb-3">
+        <select name="todo" id="todo">
+            {% for todo in todos %}
+                <option value="{{ todo['todo'] }}">{{ todo['todo'] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn" type="submit">更新</button>
+</form>
+{% endblock %}
